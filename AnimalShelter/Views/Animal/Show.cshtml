@@ -1,0 +1,32 @@
+@using AnimalShelter.Models;
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+<h3>Filter by type</h3>
+<ul>
+    <form action = '/animals/show/type' method="post">
+        <select name="type">
+       
+        @foreach(AnimalType types in @Model["types"])
+        {
+            <option class="MySelection" name="type" value=@types.GetType()>@types.GetType()</option>
+        }
+        </select>
+        <button type="submit">Filter Animals</button>
+    </form>
+</ul>
+<ul>
+@foreach(AnimalClass animal in @Model["animals"])
+{
+    <li><a href="/animals/show/@animal.GetId()">@animal.GetName() | @animal.GetType()</a></li>
+}
+
+</ul>
+
+
+
+   <a href="/animals/show">Click here for list of animals.</a><br>
+   <a href="/animals/new">Click here to Add an Animal to the Database</a>
+</div>

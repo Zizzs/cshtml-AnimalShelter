@@ -1,0 +1,13 @@
+@using AnimalShelter.Models;
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    @foreach(AnimalClass animal in @Model)
+    {
+        <li><a href="/animals/show/@animal.GetId()">@animal.GetName() | @animal.GetType()</a></li>
+    }
+
+   <a href="/animals/show">Click here for list of animals.</a>
+</div>

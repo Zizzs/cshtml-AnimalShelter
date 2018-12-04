@@ -1,0 +1,13 @@
+@using AnimalShelter.Models;
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+<p>Name: @Model.GetName()</p>
+<p>Type of animal: @Model.GetType()</p>
+<p>Sex: @Model.GetSex()</p>
+<p>Age: @Model.GetAge()</p>
+<p>Date admitted: @Model.GetDate()</p>
+   <a href="/animals/show">Click here for list of animals.</a>
+</div>
