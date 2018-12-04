@@ -86,29 +86,36 @@ namespace AnimalShelter.Models
             var cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"INSERT INTO animals (name, type, sex, date, age) VALUES (@AnimalName , @AnimalType , @AnimalSex , @AnimalDate , @AnimalAge);";
             
-            MySqlParameter name = new MySqlParameter();
-            MySqlParameter type = new MySqlParameter();
-            MySqlParameter sex = new MySqlParameter();
-            MySqlParameter date = new MySqlParameter();
-            MySqlParameter age = new MySqlParameter();
 
-            name.ParameterName = "@AnimalName";
-            type.ParameterName = "@AnimalType";
-            sex.ParameterName = "@AnimalSex";
-            date.ParameterName = "@AnimalDate";
-            age.ParameterName = "@AnimalAge";
+            cmd.Parameters.AddWithValue("@AnimalName", this._name);
+            cmd.Parameters.AddWithValue("@AnimalType", this._type);
+            cmd.Parameters.AddWithValue("@AnimalSex", this._sex);
+            cmd.Parameters.AddWithValue("@AnimalDate", this._date);
+            cmd.Parameters.AddWithValue("@AnimalAge", this._age);
 
-            name.Value = this._name;
-            type.Value = this._type;
-            sex.Value = this._sex;
-            date.Value = this._date;
-            age.Value = this._age;
+            // //MySqlParameter name = new MySqlParameter();
+            // MySqlParameter type = new MySqlParameter();
+            // MySqlParameter sex = new MySqlParameter();
+            // MySqlParameter date = new MySqlParameter();
+            // MySqlParameter age = new MySqlParameter();
 
-            cmd.Parameters.Add(name);
-            cmd.Parameters.Add(type);
-            cmd.Parameters.Add(sex);
-            cmd.Parameters.Add(date);
-            cmd.Parameters.Add(age);
+            // //name.ParameterName = "@AnimalName";
+            // type.ParameterName = "@AnimalType";
+            // sex.ParameterName = "@AnimalSex";
+            // date.ParameterName = "@AnimalDate";
+            // age.ParameterName = "@AnimalAge";
+
+            // //name.Value = this._name;
+            // type.Value = this._type;
+            // sex.Value = this._sex;
+            // date.Value = this._date;
+            // age.Value = this._age;
+
+            // //cmd.Parameters.Add(name);
+            // cmd.Parameters.Add(type);
+            // cmd.Parameters.Add(sex);
+            // cmd.Parameters.Add(date);
+            // cmd.Parameters.Add(age);
             cmd.ExecuteNonQuery();
             // _id = (int) cmd.LastInsertedId;
 
